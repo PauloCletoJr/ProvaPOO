@@ -1,0 +1,154 @@
+package com.ProvaPOO2.Controller;
+
+import java.io.IOException;
+import java.net.URL;
+import java.util.ResourceBundle;
+
+import com.ProvaPOO2.DAO.ClienteDAO;
+import com.ProvaPOO2.model.Cliente;
+import com.ProvaPOO2.util.TextFieldFormatter;
+import com.ProvaPOO2.util.ValidaCpf;
+
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.fxml.Initializable;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
+import javafx.stage.Stage;
+import javafx.stage.StageStyle;
+
+public class ClienteController implements Initializable {
+
+	@FXML
+	private TextField cliNome;
+
+	@FXML
+	private TextField cliCpf;
+
+	@FXML
+	private TextField cliTelefone;
+
+	@FXML
+	private TextField cliEmail;
+
+	@FXML
+	private TextField cliProfissao;
+
+	@FXML
+	private TextField cliEndereco;
+
+	@FXML
+	private Button btnCriarCliente;
+
+	@FXML
+	private Button btnSair;
+
+	@FXML
+	void tfMaskCpf() {
+		TextFieldFormatter tff = new TextFieldFormatter();
+		tff.setMask("###.###.###-##");
+		tff.setCaracteresValidos("0123456789");
+		tff.setTf(cliCpf);
+		tff.formatter();
+
+	}
+
+	@FXML
+	void tfMaskTelefone() {
+		TextFieldFormatter tff = new TextFieldFormatter();
+		tff.setMask("(##)#####-####");
+		tff.setCaracteresValidos("0123456789");
+		tff.setTf(cliTelefone);
+		tff.formatter();
+
+	}
+
+	private void alerta(String title, String text, String header) {
+		Alert alert = new Alert(AlertType.INFORMATION);
+		alert.setTitle(title);
+		alert.setHeaderText(header);
+		alert.setContentText(text);
+		alert.showAndWait();
+
+	}
+
+	public void initialize(URL arg0, ResourceBundle arg1) {
+
+	}
+
+	public void btnAdd(ActionEvent event) throws IOException {
+		Cliente cliente = pegaCliente();
+		ClienteDAO clientedao = new ClienteDAO();
+
+		if (cliente.getNome().equals("") || cliente.getCpf().equals("") || cliente.getEndereco().equals("")
+				|| cliente.getEmail().equals("") || cliente.getTelefone().equals("")) {
+			alerta("Error", "Preencha os campos!", "Campo nulos identificados!!!");
+		}
+		else {
+			if (clientedao.buscaClienteByCPF(cliente.getCpf()) == null) {
+
+				System.out.println("N�o existe um cpf igual a esse no banco, prossiga pra inser��o do cliente e valide o cpf!!!");
+
+				if (ValidaCpf.isCPF(cliente.getCpf())) {
+					clientedao.inserirCliente(cliente);
+					alerta("Sucesso", "Cliente cadastrado com sucesso!", "Parab�ns, hora de abrir uma conta!!!");
+					fecharTela(btnCriarCliente);
+					FXMLLoader fxmlLoader = new FXMLLoader(TelaPrincipalController.class.getResource("TelaPrincipal.fxml"));
+					Parent root1 = fxmlLoader.load();
+					Stage stage = new Stage();
+					stage.setScene(new Scene(root1));
+					stage.initStyle(StageStyle.UNDECORATED);
+					stage.show();
+
+				} else {
+					alerta("Aten��o", "Cpf Invalido", "O CPF informado n�o existe!!!");
+
+				}
+			} else {
+				alerta("Aten��o", "Cliente existente!!!", "O CPF inserido j� esta cadastrado!!!");
+			}
+			
+		}
+
+
+
+	}
+
+	private Cliente pegaCliente() {
+		String cpf = cliCpf.getText();
+		cpf = cpf.replace(".", "");
+		cpf = cpf.replace("-", "");
+
+		return new Cliente(cliNome.getText(), cpf, cliProfissao.getText(), cliEmail.getText(), cliEndereco.getText(),
+				cliTelefone.getText());
+
+	}
+
+	public void fecharTela(Button btnFechar) {
+		Stage stage = (Stage) btnFechar.getScene().getWindow();
+		stage.close();
+	}
+
+	@FXML
+	void voltarInicio(ActionEvent event) {
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader(TelaPrincipalController.class.getResource("TelaPrincipal.fxml"));
+			Parent root1 = fxmlLoader.load();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(root1));
+			stage.initStyle(StageStyle.UNDECORATED);
+			stage.show();
+			fecharTela(btnSair);
+
+		} catch (IOException e) {
+
+		}
+
+	}
+
+}

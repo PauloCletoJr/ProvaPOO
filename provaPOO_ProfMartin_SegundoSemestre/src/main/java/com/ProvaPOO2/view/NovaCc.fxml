@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="236.0" prefWidth="313.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ProvaPOO2.Controller.ContaCorrenteController">
+   <children>
+      <Button fx:id="btnCriarCc" layoutX="130.0" layoutY="189.0" mnemonicParsing="false" onAction="#novaContaCorrente" text="Criar" />
+      <TextField fx:id="txtCpfClienteNewCc" layoutX="130.0" layoutY="80.0" onKeyReleased="#tfMaskCpf" prefHeight="31.0" prefWidth="176.0" />
+      <TextField fx:id="txtDepInicialCc" layoutX="130.0" layoutY="149.0" onKeyReleased="#formatReal" prefHeight="31.0" prefWidth="176.0" />
+      <Label layoutX="35.0" layoutY="85.0" text="Cpf Cliente" />
+      <Label layoutX="32.0" layoutY="120.0" text="Nova Senha" />
+      <Label layoutX="21.0" layoutY="154.0" text="Deposito inicial" />
+      <Label layoutX="48.0" layoutY="14.0" text="Nova ContaCorrente" textFill="#00860d">
+         <font>
+            <Font size="24.0" />
+         </font>
+      </Label>
+      <PasswordField fx:id="txtSenhaNewCc" layoutX="130.0" layoutY="115.0" prefHeight="31.0" prefWidth="176.0" />
+      <Button fx:id="btnSair" layoutX="184.0" layoutY="189.0" mnemonicParsing="false" onAction="#fecharSair" text="Sair" />
+   </children>
+</AnchorPane>

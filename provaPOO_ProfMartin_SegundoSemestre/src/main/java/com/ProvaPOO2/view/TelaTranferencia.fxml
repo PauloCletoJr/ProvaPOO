@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="271.0" prefWidth="276.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ProvaPOO2.Controller.ContaCorrenteController">
+   <children>
+      <Button fx:id="btnTranferir" layoutX="62.0" layoutY="196.0" mnemonicParsing="false" onAction="#tranferir" text="Tranferir" />
+      <Button fx:id="btnSair" layoutX="165.0" layoutY="196.0" mnemonicParsing="false" onAction="#fecharSair" text="Sair" />
+      <TextField fx:id="txtcontaOrigemCc" layoutX="70.0" layoutY="58.0" />
+      <TextField fx:id="txtvalorOrigemCc" layoutX="70.0" layoutY="124.0" />
+      <TextField fx:id="txtcontaDestinoCc" layoutX="70.0" layoutY="94.0" />
+      <Label layoutX="14.0" layoutY="62.0" text="Origem:" />
+      <Label layoutX="21.0" layoutY="128.0" text="Valor:" />
+      <Label layoutX="14.0" layoutY="98.0" text="Destino:" />
+      <Label fx:id="title" layoutX="70.0" layoutY="14.0" text="Transferencia" textFill="#069032">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="20.0" layoutY="165.0" text="Senha:" />
+      <PasswordField fx:id="txtSenhaTranferenciaCc" layoutX="70.0" layoutY="161.0" />
+   </children>
+</AnchorPane>

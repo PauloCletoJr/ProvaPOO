@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="278.0" prefWidth="302.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.ProvaPOO2.Controller.ClienteController">
+   <children>
+      <Label layoutX="104.0" layoutY="7.0" text="Novo Cliente" textFill="#007c1f">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <Label layoutX="29.0" layoutY="44.0" text="Nome:" textAlignment="JUSTIFY">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="39.0" layoutY="75.0" text="CPF:" textAlignment="JUSTIFY">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="24.0" layoutY="102.0" text="Telefone:" textAlignment="JUSTIFY">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="34.0" layoutY="131.0" text="Email:" textAlignment="JUSTIFY">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="23.0" layoutY="159.0" text="Profissao:" textAlignment="JUSTIFY">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <Label layoutX="22.0" layoutY="188.0" text="Endereço:" textAlignment="JUSTIFY">
+         <font>
+            <Font size="14.0" />
+         </font>
+      </Label>
+      <TextField fx:id="cliNome" layoutX="89.0" layoutY="42.0" prefHeight="25.0" prefWidth="196.0" />
+      <TextField fx:id="cliCpf" layoutX="91.0" layoutY="73.0" onKeyReleased="#tfMaskCpf" prefHeight="25.0" prefWidth="196.0" />
+      <TextField fx:id="cliTelefone" layoutX="91.0" layoutY="100.0" onKeyReleased="#tfMaskTelefone" prefHeight="25.0" prefWidth="196.0" />
+      <TextField fx:id="cliEmail" layoutX="91.0" layoutY="129.0" prefHeight="25.0" prefWidth="196.0" />
+      <TextField fx:id="cliProfissao" layoutX="91.0" layoutY="157.0" prefHeight="25.0" prefWidth="196.0" />
+      <TextField fx:id="cliEndereco" layoutX="91.0" layoutY="186.0" prefHeight="25.0" prefWidth="196.0" />
+      <Button fx:id="btnCriarCliente" layoutX="16.0" layoutY="224.0" mnemonicParsing="false" onAction="#btnAdd" prefHeight="35.0" prefWidth="130.0" text="Criar" />
+      <Button fx:id="btnSair" layoutX="157.0" layoutY="224.0" mnemonicParsing="false" onAction="#voltarInicio" prefHeight="35.0" prefWidth="130.0" text="Sair" />
+   </children>
+</AnchorPane>
